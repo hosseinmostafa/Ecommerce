@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary-color: #2bcbba;
+    --light-color: #d1d8e0;
+    --grey-color: #687080;
+    --red-color: #ff4757;
+    --flashwhite-color: #f1f2f6;
+    --white-color: #ffffff;
+    --dark-color: #212121;
+
+    --primary-font: "Montserrat", sans-serif;
+    --second-font: "Prata", serif;
+    --fs14: 14px;
+    --fw600: 600;
+
+    --transition-color: color .3s;
+    --transition-background: background-color .3s;
+    --transition-border: border .3s;
+    --transition-transform: transform .3s;
+
+    --shadow: 0px 10px 20px 0px rgb(0 0 0 / 20%);
+
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--dark-color);
+    background-color: var(--white-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+input,
+textarea,
+select {
+    font: inherit;
+    width: 100%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    width: auto;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: inherit;
+    /* opacity: .8; */
+}
+
+button {
+    font: inherit;
+}
+
+strong {
+    font-weight: var(--fw600);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--second-font);
+    font-weight: 400;
+    line-height: normal;
+    /* color: var(--dark-color); */
+}
+
+h1 {
+    font-size: 2.75em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+
+/* -------------------
+
+    #Reused style
+
+   ----------------- */
+
+
+.container {
+    max-width: var(--mx-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--gutter, 15px);
+}
+
+.item-floating {
+    position: absolute;
+    top: -8px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: var(--fw600);
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+
+/* -------------------
+
+    #Gropping selector
+
+   ----------------- */
+
+.item-floating,
+.header-center .branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* -------------------
+
+    #Header
+
+   ----------------- */
+
+.inner-header {
+    line-height: 80px;
+    /* border-bottom: 1px solid var(--grey-color); */
+}
+
+.inner-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inner-header .menu>ul,
+.list-inline>ul {
+    display: flex;
+    align-items: center;
+}
+
+.header-left,
+.header-right {
+    flex-grow: 1;
+}
+
+.header-center nav {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 180px;
+    max-width: 720px
+}
+
+.header-center .branding {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.header-center .branding a {
+    font-family: var(--second-font);
+    font-size: 30px;
+    line-height: inherit;
+    /* color: var(--dark-color); */
+    pointer-events: auto;
+}
+
+.header-center .menu>ul>li>a {
+    font-size: var(--fs14);
+    font-weight: var(--fw600);
+    text-transform: uppercase;
+    padding: 0 14px;
+    display: flex;
+    gap: 5px;
+}
+
+.header-right ul {
+    justify-content: flex-end;
+}
+
+.list-inline a,
+.menu-trigger {
+    position: relative;
+    font-size: 24px;
+    padding: 0 10px;
+    line-height: 1;
+    display: flex;
+    transition: var(--transition-color);
+}
+
+.header-left .list-inline {
+    display: none;
+}
+
+:where(.header-left, .header-right) li {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+@media (min-width: 992px) {
+    .menu-trigger {
+        display: none;
+    }
+
+    .header-center nav {
+        display: grid;
+    }
+
+    .header-left .list-inline {
+        display: block;
+    }
+
+    /* -------------------
+    
+        #Sub menu & Maga
+    
+       ----------------- */
+
+       nav.menu .sub-menu{
+        position: absolute;
+        top: auto;
+        line-height: initial;
+        background-color: var(--white-color);
+        box-shadow: var(--shadow);
+        z-index: 100000;
+       }
+}
