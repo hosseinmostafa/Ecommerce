@@ -22,6 +22,10 @@
 
     --shadow: 0px 10px 20px 0px rgb(0 0 0 / 20%);
 
+    --transition-opacity: opacity .3s;
+
+    --fade: fade-botton .3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
 }
 
 html {
@@ -161,6 +165,55 @@ h4 {
     justify-content: center;
 }
 
+.list-block a {
+    position: relative;
+    font-size: var(--fs14);
+    color: var(--grey-color);
+    padding: 5px 0px;
+    display: inline-block;
+    transition: var(--transition-color);
+}
+
+.list-block a:hover {
+    color: var(--primary-color);
+}
+
+.list-block a::before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color: var(--dark-color);
+    top: 50%;
+    left: -15px;
+    bottom: 0;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    /* opacity: 0; */
+    /* transition: var(--transition-opacity); */
+    transition: width .3s, height .3s;
+}
+
+.list-block a:hover::before {
+    /* opacity: 1; */
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+}
+
+@keyframes fade-botton {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+}
+
 
 
 
@@ -267,12 +320,29 @@ h4 {
     
        ----------------- */
 
-       nav.menu .sub-menu{
+    nav.menu :where(.sub-menu, .sub-mega) {
         position: absolute;
         top: auto;
         line-height: initial;
         background-color: var(--white-color);
         box-shadow: var(--shadow);
         z-index: 100000;
-       }
+        display: none;
+        animation: var(--fade);
+    }
+
+    nav.menu li:hover :where(.sub-menu, .sub-mega) {
+        display: block;
+    }
+
+    nav.menu .sub-menu {
+        padding: 10px 0px;
+        min-width: 220px;
+    }
+
+    nav.menu .sub-menu li {
+        padding: 5px 30px;
+    }
 }
+
+/* 29:00 */
